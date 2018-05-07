@@ -1,0 +1,325 @@
+<!-- FORM -->
+<form #r="ngForm">
+	<div class="box box-primary">
+		<div class="box-header with-border">
+			<h3 class="box-title">Business Information</h3>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Business Registration No.</label>
+							<input type="text" [(ngModel)]="register.companyNo" name="companyNo" class="form-control" required/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Business Name</label>
+							<input type="text" [(ngModel)]="register.companyName" name="companyName" class="form-control" required/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Business Start Date</label>
+							<div class="input-group date">
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+								<input type="date" [(ngModel)]="register.bizStartDate" name="bizStartDate" class="form-control pull-right" id="startDate"
+								 required>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Business Expiry Date</label>
+							<div class="input-group date">
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+								<input type="date" [(ngModel)]="register.bizExpDate" name="bizExpDate" class="form-control pull-right" id="endDate" required>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Contact No.</label>
+							<input type="text" [(ngModel)]="register.companyPhoneNo" name="companyPhoneNo" class="form-control" required/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Email</label>
+							<input type="email" [(ngModel)]="register.companyEmail" name="companyEmail" class="form-control" required/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Business Address</label>
+							<textarea [(ngModel)]="register.companyAddress" name="companyAddress" class="form-control" required></textarea>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-4">
+									<label>Postcode</label>
+									<input type="text" [(ngModel)]="register.companyPostcode" class="form-control" name="companyPostcode" maxlength="5" required>
+								</div>
+								<div class="col-xs-8">
+									<label>State</label>
+									<select class="form-control" [(ngModel)]="register.companyState" name="companyState" required>
+										<option *ngFor="let state of states" [value]="state">{{ state }}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>No. of Workers</label>
+							<input type="number" [(ngModel)]="register.companyNoWorkers" name="companyNoWorkers" class="form-control" required/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Business Onwership</label>
+							<select class="form-control" [(ngModel)]="register.bizOwnership" name="bizOwnership" required>
+								<option disabled selected>--Select--</option>
+								<option value="Private">Private</option>
+								<option value="Partnership">Partnership</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-body -->
+			</div>
+			<!-- /.box -->
+		</div>
+		<!-- /.col (left) -->
+	</div>
+	<div class="box box-success">
+		<div class="box-header with-border">
+			<h3 class="box-title">Information of Current Owner</h3>
+			<!-- /.box-header -->
+			<div class="box-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Full Name</label>
+							<input type="text" [(ngModel)]="register.fullName" name="fullName" class="form-control" required/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>IC No.</label>
+							<input type="text" [(ngModel)]="register.icNo" name="icNo" class="form-control" value="" required/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Date of Birth</label>
+							<div class="input-group date">
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+								<input type="date" [(ngModel)]="register.dob" name="dob" class="form-control pull-right" id="DOB" required>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Gender</label>
+							<select class="form-control" [(ngModel)]="register.gender" name="gender" required>
+								<option disabled selected>--Select Gender--</option>
+								<option value="Male">Male</option>
+								<option value="Female">Female</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Nationality</label>
+							<select class="form-control" [(ngModel)]="register.nationality" name="nationality" required>
+								<option value="Malaysia" selected>Malaysia</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Email Address</label>
+							<input type="email" [(ngModel)]="register.email" name="email" class="form-control" required/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Contact No. (Mobile)</label>
+							<input type="text" [(ngModel)]="register.mobileNo" name="mobileNo" class="form-control" required/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Contact No. (Office)</label>
+							<input type="text" [(ngModel)]="register.officeNo" name="officeNo" class="form-control" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Home Address</label>
+							<textarea name="homeAddress" [(ngModel)]="register.homeAddress" class="form-control" required></textarea>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-4">
+									<label>Postcode</label>
+									<input type="text" [(ngModel)]="register.homePostcode" class="form-control" name="homePostcode" maxlength="5" required>
+								</div>
+								<div class="col-xs-8">
+									<label>State</label>
+									<select class="form-control" [(ngModel)]="register.homeState" name="homeState" required>
+										<option *ngFor="let state of states" [value]="state">{{ state }}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Mailling Address</label>
+							<textarea name="mailAddress" [(ngModel)]="register.mailAddress" class="form-control" required></textarea>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<div class="col-xs-4">
+									<label>Postcode</label>
+									<input type="text" [(ngModel)]="register.mailPostcode" class="form-control" name="mailPostcode" maxlength="5" required>
+								</div>
+								<div class="col-xs-8">
+									<label>State</label>
+									<select class="form-control" [(ngModel)]="register.mailState" name="mailState" required>
+										<option *ngFor="let state of states" [value]="state">{{ state }}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					</div>
+					<div class="col-md-6">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" (click)="sameAddress($event)" /> Same as home address
+							</label>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-body -->
+				<div class="box-footer">
+					<div class="pull-right">
+						<button class="btn btn-danger">CLEAR</button>
+						<button class="btn btn-success" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" type="submit">SUBMIT</button>
+						<!-- <button class="btn btn-success" (click)="submit()" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" type="submit"
+						[disabled]="!r.vaild">SUBMIT</button> -->
+					</div>
+				</div>
+			</div>
+			<!-- /.box -->
+		</div>
+		<!-- /.col (left) -->
+	</div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Upload Documents to Continue</h4>
+			</div>
+			<div class="modal-body">
+				<form #f="ngForm">
+					<div class="box box-solid box-info">
+						<div class="box-header with-border">
+							<h4 class="box-title">SSM Related Documents</h4>
+						</div>
+						<div class="box-body">
+							<div class="col-md-6">
+								<div class="input-group">
+									<label class="input-group-btn">
+										<span class="btn btn-info">
+											Business Certificate
+											<input type="file" id="companyBizCert" style="display: none;" (change)="uploadBizCert($event)" accept=".pdf" required>
+										</span>
+									</label>
+									<input type="text" class="form-control" readonly>
+								</div>
+								<progress max="100" [value]="(uploadPercentBizCert | async)"></progress>
+								<span class="help-block">
+									PDF format only.
+								</span>
+							</div>
+							<div class="col-md-6">
+								<div class="input-group">
+									<label class="input-group-btn">
+										<span class="btn btn-info">
+											Business Profile
+											<input type="file" id="companyBizProfile" style="display: none;" (change)="uploadBizProfile($event)" accept=".pdf" required>
+										</span>
+									</label>
+									<input type="text" class="form-control" readonly>
+								</div>
+								<progress max="100" [value]="(uploadPercentBizProfile | async)"></progress>
+								<span class="help-block">
+									PDF format only.
+								</span>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="box box-solid box-success">
+						<div class="box-header with-border">
+							<h4 class="box-title">MyKad of the Owner</h4>
+						</div>
+						<div class="box-body">
+							<div class="col-md-12">
+								<div class="input-group">
+									<label class="input-group-btn">
+										<span class="btn btn-success">
+											MyKad
+											<input type="file" id="myKad" style="display: none;" (change)="uploadMykad($event)" accept=".pdf" required>
+										</span>
+									</label>
+									<input type="text" class="form-control" readonly>
+								</div>
+								<progress max="100" [value]="(uploadPercentMyKad | async)"></progress>
+								<span class="help-block">
+									PDF format only.
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary" (click)="submit()">SUBMIT</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

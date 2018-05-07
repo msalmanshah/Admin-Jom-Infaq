@@ -1,0 +1,83 @@
+<body class="hold-transition login-page">
+    <div class="alert alert-success" role="alert" *ngIf="userCreated">Registration Successful. Please login to continue.</div>
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="../index2.html">
+        <b>Mobile </b>Tow Assist</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form #l="ngForm" (ngSubmit)="onLogin(l)">
+        <div class="form-group has-feedback">
+          <input type="email" class="form-control" ngModel placeholder="Email" name="email" required>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" placeholder="Password" ngModel name="password" required>
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat" [disabled]="!l.valid">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <!-- /.social-auth-links -->
+
+      <a href="#">I forgot my password</a>
+      <br>
+      <a class="text-center" data-toggle="modal" data-target="#myModal">Register a new membership</a>
+
+    </div>
+    <!-- /.login-box-body -->
+  </div>
+  <!-- /.login-box -->
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Register to Mobile Tow Assist</h4>
+      </div>
+      <div class="modal-body">
+          <div class="alert alert-info" role="alert">The registration is only for Tow Service Provider. For Public User, Please use our app to register.</div>
+          <div class="alert alert-danger" role="alert" *ngIf="errMessageRegister">{{ errMessageRegister }}</div>
+          <form #f="ngForm" (ngSubmit)="onRegister(f)">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" ngModel placeholder="Email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="passowrd">Password</label>
+                <input type="password" class="form-control" placeholder="Password" ngModel name="password" required>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> I agree with the Terms & Conditions
+                </label>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Register</button>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
