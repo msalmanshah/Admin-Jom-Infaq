@@ -1,0 +1,176 @@
+<div class="wrapper">
+  <!-- Main Header -->
+ <app-starter-header [fullName]="fullName" [role]="role"></app-starter-header>
+ <!-- Left side column. contains the logo and sidebar -->
+ <app-starter-left-side [fullName]="fullName" [role]="role"></app-starter-left-side>
+ <!-- Content Wrapper. Contains page content -->
+ 
+ <div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- <router-outlet></router-outlet> -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">List of Payments Made</h3>
+          </div>
+          <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" value="all" name="check" selected [(ngModel)]="check"> All
+            <input type="radio" value="zakat" name="check" [(ngModel)]="check"> Zakat
+            <input type="radio" value="fidyah" name="check" [(ngModel)]="check"> Fidyah
+            <input type="radio" value="infaq" name="check" [(ngModel)]="check"> Infaq
+          </p>
+          
+          <!-- /.box-header -->
+          <div class="box-body">
+            <div [ngSwitch]="true">
+                <div *ngSwitchCase="check === 'all'">
+                    <table id="example2" class="table table-bordered table-hover">
+                      <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr class="clickable-row" *ngFor="let list of paymentList | async; let i = index" >
+                        <td>{{ i+1 }}</td>
+                          <td>{{ list.transdate | date:'yyyy-MM-dd' }}</td>
+                          <td>{{ list.type }}</td>
+                          <td>{{ list.name }}</td>
+                          <td>{{ list.amount }}</td>
+                          <td>{{ list.status }}</td>
+                        
+                      </tr>
+                      <tr>
+                        <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
+                        <td>{{total}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                </div>
+                <div *ngSwitchCase="check === 'zakat'">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Name</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="clickable-row" *ngFor="let list of zakatList | async; let i = index" >
+                          <td>{{ i+1 }}</td>
+                            <td>{{ list.transdate | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ list.type }}</td>
+                            <td>{{ list.name }}</td>
+                            <td>{{ list.amount }}</td>
+                            <td>{{ list.status }}</td>
+                            
+                        </tr>
+                        <tr>
+                          <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
+                          <td>{{total}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div *ngSwitchCase="check === 'fidyah'">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Name</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="clickable-row" *ngFor="let list of fidyahList | async; let i = index" >
+                          <td>{{ i+1 }}</td>
+                            <td>{{ list.transdate | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ list.type }}</td>
+                            <td>{{ list.name }}</td>
+                            <td>{{ list.amount }}</td>
+                            <td>{{ list.status }}</td>
+                            
+                        </tr>
+                        <tr>
+                          <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
+                          <td>{{total}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div *ngSwitchCase="check === 'infaq'">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Date</th>
+                          <th>Type</th>
+                          <th>Name</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="clickable-row" *ngFor="let list of infaqList | async; let i = index" >
+                          <td>{{ i+1 }}</td>
+                            <td>{{ list.transdate | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ list.type }}</td>
+                            <td>{{ list.name }}</td>
+                            <td>{{ list.amount }}</td>
+                            <td>{{ list.status }}</td>
+                          
+                        </tr>
+                        <tr>
+                          <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
+                          <td>{{total}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+           
+          </div>
+          <!-- ./box-body -->
+          <div class="box-footer">
+            
+          </div>
+          <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row (main row) -->
+    
+  </section>
+  <!-- /.content -->
+</div>
+
+ <!-- /.content-wrapper -->
+ <!-- Main Footer -->
+ <app-starter-footer></app-starter-footer>
+ <!-- Control Sidebar -->
+ <app-starter-control-sidebar></app-starter-control-sidebar>
+ <!-- /.control-sidebar -->
+ <!-- Add the sidebar's background. This div must be placed
+      immediately after the control sidebar -->
+ <div class="control-sidebar-bg">hello world</div>
+</div>

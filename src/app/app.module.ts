@@ -32,6 +32,9 @@ import { RegisterControlSidebarComponent } from './register/register-control-sid
 import { RegisterFooterComponent } from './register/register-footer/register-footer.component';
 import { RegisterHeaderComponent } from './register/register-header/register-header.component';
 import { RegisterLeftSideComponent } from './register/register-left-side/register-left-side.component';
+import { ApplicationListComponent } from './application-list/application-list.component';
+import { PaymentlistComponent } from './paymentlist/paymentlist.component';
+import { InfaqComponent } from './infaq/infaq.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { RegisterLeftSideComponent } from './register/register-left-side/registe
     RegisterControlSidebarComponent,
     RegisterFooterComponent,
     RegisterHeaderComponent,
-    RegisterLeftSideComponent
+    RegisterLeftSideComponent,
+    ApplicationListComponent,
+    PaymentlistComponent,
+    InfaqComponent
   ],
   imports: [
     BrowserModule,

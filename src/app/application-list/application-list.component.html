@@ -1,0 +1,43 @@
+      <div class="row">
+      	<div class="col-md-12">
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">List of Payments Made</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Name</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="clickable-row" *ngFor="let list of paymentList | async; let i = index" >
+                	<td>{{ i+1 }}</td>
+                    <td>{{ list.transdate | date:'yyyy-MM-dd' }}</td>
+                    <td>{{ list.type }}</td>
+                    <td>{{ list.name }}</td>
+                    <td>{{ list.amount }}</td>
+                    <td>{{ list.status }}</td>
+                    <td><button class="btn btn-primary" type="button" (click)="verify(list.key)">Verify</button></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- ./box-body -->
+            <div class="box-footer">
+              
+            </div>
+            <!-- /.box-footer -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row (main row) -->

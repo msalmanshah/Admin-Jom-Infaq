@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyC12fqs0FC7fwrGIweIEa_BMQ2XmeZr2AA',
-    authDomain: 'mobiletowassist-197104.firebaseapp.com',
-    databaseURL: 'https://mobiletowassist-197104.firebaseio.com',
-    projectId: 'mobiletowassist-197104',
-    storageBucket: 'mobiletowassist-197104.appspot.com',
-    messagingSenderId: '381071599550'
+    apiKey: 'AIzaSyBbid2-JCUq04POXIHvjTGJkTr-lmCM-uA',
+    authDomain: 'jominfaq2017.firebaseapp.com',
+    databaseURL: 'https://jominfaq2017.firebaseio.com/',
+    projectId: 'jominfaq2017',
+    storageBucket: 'jominfaq2017.appspot.com',
+    messagingSenderId: '952108736291'
   }
 };

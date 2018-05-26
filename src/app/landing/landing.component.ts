@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 declare var jQuery: any;
 
@@ -12,12 +13,12 @@ declare var jQuery: any;
 })
 export class LandingComponent {
 
-
   userCreated = false;
   errMessageRegister: string;
   errMessageLogin: string;
+  isAdmin = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private afAuth: AngularFireAuth) { }
 
   onRegister(form: NgForm) {
     this.authService.register(form.value.email, form.value.password).then(res => {
@@ -33,13 +34,18 @@ export class LandingComponent {
 
   onLogin(form: NgForm) {
     this.authService.login(form.value.email, form.value.password).then(res => {
-      if (res) {
-        if (this.userCreated) {
-          this.router.navigate(['/register']);
-        } else {
-          this.router.navigate(['/starter']);
+      
+      this.afAuth.authState.subscribe(auth => {
+        if(auth.uid == 'b3IhaHPoXbS5SL0QKbE0BuWQFut1') {
+          this.isAdmin = true;
         }
+        if (res) {
+      
+        this.router.navigate(['/starter']);
+        
       }
+      
+      });
     }).catch(err => {
       this.errMessageLogin = err.message;
     });

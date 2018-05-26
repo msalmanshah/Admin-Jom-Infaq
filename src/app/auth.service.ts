@@ -14,3 +14,4 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 }
+ 

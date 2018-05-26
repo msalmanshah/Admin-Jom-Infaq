@@ -1,0 +1,188 @@
+<div class="wrapper">
+    <!-- Main Header -->
+    <app-starter-header [fullName]="fullName" [role]="role"></app-starter-header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <app-starter-left-side [fullName]="fullName" [role]="role"></app-starter-left-side>
+    <!-- Content Wrapper. Contains page content -->
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="box-body">
+
+                <ul class="products-list product-list-in-box">
+                    <li *ngFor="let list of infaqList | async; let i = index " class="item">
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" (click)="remove(list.key)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="product-info">
+                            <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#editInfaq" (click)="edit(list.key)">{{list.name}}
+                                <span class="label label-warning pull-right">RM{{list.current}}</span>
+                            </a>
+                            <span class="product-description">
+                                {{list.desc}}
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addInfaq">
+                    ADD NEW INFAQ
+                </button>
+            </div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <div class="modal fade" id="addInfaq">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Add New Infaq</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">NAME</small>
+                                </strong>
+                            </label>
+                            <input type="text" [(ngModel)]="name" required="required" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">DESCRIPTION</small>
+                                </strong>
+                            </label>
+                            <textarea  [(ngModel)]="desc" required="required" class="form-control"></textarea>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">CURRENT AMOUNT (RM)</small>
+                                </strong>
+                            </label>
+                            <input type="number" [(ngModel)]="current" required="required" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">GOAL AMOUNT (RM)</small>
+                                </strong>
+                            </label>
+                            <input type="number" [(ngModel)]="goal" required="required" class="form-control" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="add()">Add</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="editInfaq">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Edit Infaq</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">NAME</small>
+                                </strong>
+                            </label>
+                            <input type="text" [(ngModel)]="name" required="required" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">DESCRIPTION</small>
+                                </strong>
+                            </label>
+                            <textarea  [(ngModel)]="desc" required="required" class="form-control"></textarea>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">CURRENT AMOUNT (RM)</small>
+                                </strong>
+                            </label>
+                            <input type="number" [(ngModel)]="current" required="required" class="form-control" />
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <label>
+                                <strong>
+                                    <small class="text-info">GOAL AMOUNT (RM)</small>
+                                </strong>
+                            </label>
+                            <input type="number" [(ngModel)]="goal" required="required" class="form-control" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="edit()">Add</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+    <!-- /.content-wrapper -->
+    <!-- Main Footer -->
+    <app-starter-footer></app-starter-footer>
+    <!-- Control Sidebar -->
+    <app-starter-control-sidebar></app-starter-control-sidebar>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+    immediately after the control sidebar -->
+    <div class="control-sidebar-bg">hello world</div>
+</div>

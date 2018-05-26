@@ -1,3 +1,4 @@
+<div class="alert alert-success" role="alert" *ngIf="isSuccess">{{ successMessage }}</div>
 <!-- FORM -->
 <form #r="ngForm">
 	<div class="box box-primary">
@@ -83,8 +84,8 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>No. of Workers</label>
-							<input type="number" [(ngModel)]="register.companyNoWorkers" name="companyNoWorkers" class="form-control" required/>
+							<label>Tow Truck Registration No.</label>
+							<input type="text" [(ngModel)]="register.towTruckPlateNo" name="towTruckPlateNo" class="form-control" placeholder="WAA 1234" required/>
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -229,10 +230,13 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="alert alert-success" role="alert" *ngIf="isSuccess">{{ successMessage }}</div>
+				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">
 					<div class="pull-right">
-						<button class="btn btn-danger">CLEAR</button>
+						<input type="reset" class="btn btn-danger" value="Reset">
 						<button class="btn btn-success" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" type="submit">SUBMIT</button>
 						<!-- <button class="btn btn-success" (click)="submit()" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false" type="submit"
 						[disabled]="!r.vaild">SUBMIT</button> -->

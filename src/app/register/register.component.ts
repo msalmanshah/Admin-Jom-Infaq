@@ -4,6 +4,7 @@ import { Register } from './../models/register';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { Router } from '@angular/router';
 
 declare var jQuery: any;
 
@@ -36,6 +37,9 @@ export class RegisterComponent implements OnInit {
   isBizCert = false;
   isBizProfile = false;
   isMyKad = false;
+  isSuccess = false;
+
+  successMessage = 'Registration success. Please wait the administrator to contact you.';
 
   uploadPercentBizCert: Observable<number>;
   downloadURLBizCert: Observable<string>;
@@ -49,7 +53,7 @@ export class RegisterComponent implements OnInit {
   registrationRef: AngularFireObject<any>;
   registration: Observable<any>;
 
-  constructor(private afStorage: AngularFireStorage, private afAuth: AngularFireAuth, private afDb: AngularFireDatabase) {
+  constructor(private afStorage: AngularFireStorage, private afAuth: AngularFireAuth, private afDb: AngularFireDatabase, private router: Router) {
     this.afAuth.authState.subscribe(auth => {
       this.assignUserId(auth.uid);
       this.registrationRef = this.afDb.object(`user/${this.userId}`);
@@ -121,7 +125,14 @@ export class RegisterComponent implements OnInit {
     if (this.isBizCert && this.isBizProfile && this.isMyKad) {
       jQuery('#myModal').modal('hide');
       this.register.role = 2;
-      this.registrationRef.set(this.register);
+      this.register.sys_status = 'applied';
+      this.registrationRef.set(this.register).then(() => {
+        this.isSuccess = true;
+        setTimeout(() => {
+          this.router.navigate(['/landing']);
+        }, 2000);
+      });
+      
     }
   }
 

@@ -10,7 +10,7 @@ export class Register {
         public companyAddress: string,
         public companyPostcode: string,
         public companyState: string,
-        public companyNoWorkers: string,
+        public towTruckPlateNo: string,
         public bizOwnership: string,
         public fullName: string,
         public icNo: string,
@@ -27,5 +27,6 @@ export class Register {
         public mailPostcode: string,
         public mailState: string,
         public role: number,
+        public sys_status: string,
     ) {  }
 }
