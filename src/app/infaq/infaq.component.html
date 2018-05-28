@@ -15,12 +15,14 @@
 
                 <ul class="products-list product-list-in-box">
                     <li *ngFor="let list of infaqList | async; let i = index " class="item">
+
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="remove" (click)="remove(list.key)">
                                 <i class="fa fa-times"></i>
                             </button>
                         </div>
                         <div class="product-info">
+                            <i class="fa fa-heart" style="color: aqua"></i>
                             <a href="javascript:void(0)" class="product-title" data-toggle="modal" data-target="#editInfaq" (click)="edit(list.key)">{{list.name}}
                                 <span class="label label-warning pull-right">RM{{list.current}}</span>
                             </a>
@@ -29,10 +31,11 @@
                             </span>
                         </div>
                     </li>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addInfaq">
+                        ADD NEW INFAQ
+                    </button>
                 </ul>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addInfaq">
-                    ADD NEW INFAQ
-                </button>
+
             </div>
 
         </section>
@@ -69,7 +72,7 @@
                                     <small class="text-info">DESCRIPTION</small>
                                 </strong>
                             </label>
-                            <textarea  [(ngModel)]="desc" required="required" class="form-control"></textarea>
+                            <textarea [(ngModel)]="desc" required="required" class="form-control"></textarea>
 
                         </div>
                     </div>
@@ -126,7 +129,7 @@
                                     <small class="text-info">NAME</small>
                                 </strong>
                             </label>
-                            <input type="text" [(ngModel)]="name" required="required" class="form-control" />
+                            <input type="text" [(ngModel)]="name" required="required" class="form-control" value="{{ (userInfo | async)?.name }}" />
                         </div>
                     </div>
                     <div class="row">
@@ -137,7 +140,7 @@
                                     <small class="text-info">DESCRIPTION</small>
                                 </strong>
                             </label>
-                            <textarea  [(ngModel)]="desc" required="required" class="form-control"></textarea>
+                            <textarea [(ngModel)]="desc" required="required" class="form-control" value="{{ (userInfo | async)?.desc }}"></textarea>
 
                         </div>
                     </div>
@@ -149,7 +152,8 @@
                                     <small class="text-info">CURRENT AMOUNT (RM)</small>
                                 </strong>
                             </label>
-                            <input type="number" [(ngModel)]="current" required="required" class="form-control" />
+                            <input type="number" [(ngModel)]="current" required="required" class="form-control" value="{{ (userInfo | async)?.current }}"
+                            />
 
                         </div>
                     </div>
@@ -161,14 +165,14 @@
                                     <small class="text-info">GOAL AMOUNT (RM)</small>
                                 </strong>
                             </label>
-                            <input type="number" [(ngModel)]="goal" required="required" class="form-control" />
+                            <input type="number" [(ngModel)]="goal" required="required" class="form-control" value="{{ (userInfo | async)?.goal }}" />
 
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="edit()">Add</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editInfo()">Edit</button>
                 </div>
             </div>
             <!-- /.modal-content -->

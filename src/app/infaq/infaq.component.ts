@@ -18,7 +18,7 @@ export class InfaqComponent implements OnInit {
   // tslint:disable-next-line:no-trailing-whitespace
 
   userInfoRef: AngularFireObject<any>;
-  // userInfo: Observable<any>;
+  userInfo: Observable<any>;
   name: string;
   desc: string;
   current: number;
@@ -48,10 +48,10 @@ export class InfaqComponent implements OnInit {
   }
 
   edit(key) {
-    // console.log(key);
-    // this.userId = key;
-    // this.userInfoRef = this.db.object(`infaq/${this.userId}`);
-    // this.userInfo = this.userInfoRef.valueChanges();
+    console.log(key);
+    this.userId = key;
+    this.userInfoRef = this.db.object(`infaq/${this.userId}`);
+    this.userInfo = this.userInfoRef.valueChanges();
   }
 
   remove(key) {
@@ -59,6 +59,15 @@ export class InfaqComponent implements OnInit {
     this.userId = key;
     this.db.object(`infaq/${this.userId}`).remove();
 
+  }
+
+  editInfo() {
+    this.userInfoRef.update({
+      'name': this.name,
+      'desc': this.desc,
+      'current': this.current,
+      'goal': this.goal
+    });
   }
 
 }
