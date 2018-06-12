@@ -36,6 +36,7 @@ import { ApplicationListComponent } from './application-list/application-list.co
 import { PaymentlistComponent } from './paymentlist/paymentlist.component';
 import { InfaqComponent } from './infaq/infaq.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

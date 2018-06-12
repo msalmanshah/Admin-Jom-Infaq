@@ -7,7 +7,69 @@
  
  <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  
+  <section class="content-header">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-aqua"><i class="fa fa-heart"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Total Amount</span>
+            <span class="info-box-number">RM {{total}}<small></small></span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-red"><i class="fa fa-hand-o-right"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Zakat</span>
+            <span class="info-box-number">RM {{zakatamt}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- fix for small devices only -->
+      <div class="clearfix visible-sm-block"></div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-green"><i class="fa fa-leaf"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Fidyah</span>
+            <span class="info-box-number">RM {{fidyahamt}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+          <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Infaq</span>
+            <span class="info-box-number">RM {{infaqamt}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->  
+    <br>
+    
+  </section>
 
   <!-- Main content -->
   <section class="content">
@@ -82,7 +144,7 @@
                         </tr>
                         <tr>
                           <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
-                          <td>{{total}}</td>
+                          <td>{{zakatamt}}</td>
                         </tr>
                         </tbody>
                       </table>
@@ -95,7 +157,7 @@
                           <th>Date</th>
                           <th>Type</th>
                           <th>Name</th>
-                          <th>Amount</th>
+                          <th>Amount (RM)</th>
                           <th>Status</th>
                         </tr>
                         </thead>
@@ -111,7 +173,7 @@
                         </tr>
                         <tr>
                           <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
-                          <td>{{total}}</td>
+                          <td>{{fidyahamt}}</td>
                         </tr>
                         </tbody>
                       </table>
@@ -140,7 +202,7 @@
                         </tr>
                         <tr>
                           <td colspan="5" style="text-align: end"><b>Total Amount:</b></td>
-                          <td>{{total}}</td>
+                          <td>{{infaqamt}}</td>
                         </tr>
                         </tbody>
                       </table>

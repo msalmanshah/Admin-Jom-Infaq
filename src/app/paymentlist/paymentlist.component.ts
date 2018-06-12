@@ -17,11 +17,14 @@ export class PaymentlistComponent implements OnInit {
   infaqListRef: AngularFireList<any>;
   paymentList: Observable<any[]>;
   registerList2: Observable<any[]>;
-  check:string = "all";
+  check: string = "all";
   zakatList: Observable<any[]>;
   fidyahList: Observable<any[]>;
   infaqList: Observable<any[]>;
-  total:number = 0;
+  total: number = 0;
+  zakatamt: number = 0;
+  fidyahamt: number = 0;
+  infaqamt: number = 0;
 
   constructor(public db: AngularFireDatabase, private router: Router) {
     this.registerListRef = db.list('transaction', ref => ref.orderByChild('status').equalTo('Paid'));
@@ -31,12 +34,26 @@ export class PaymentlistComponent implements OnInit {
       )
     );
 
+    this.paymentList.subscribe(
+      competitors => {
+        competitors.map(competitor =>
+          this.calcTotal(competitor.amount, competitor.status)
+        );
+      });
+
     this.zakatListRef = db.list('transaction', ref => ref.orderByChild('transid').equalTo('ZAKAT'));
     this.zakatList = this.zakatListRef.snapshotChanges().pipe(
       map(changes =>
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     );
+
+    this.zakatList.subscribe(
+      competitors => {
+        competitors.map(competitor =>
+          this.calcZakat(competitor.amount, competitor.status)
+        );
+      });
 
     this.fidyahListRef = db.list('transaction', ref => ref.orderByChild('transid').equalTo('FIDYAH'));
     this.fidyahList = this.fidyahListRef.snapshotChanges().pipe(
@@ -45,6 +62,13 @@ export class PaymentlistComponent implements OnInit {
       )
     );
 
+    this.fidyahList.subscribe(
+      competitors => {
+        competitors.map(competitor =>
+          this.calcFidyah(competitor.amount, competitor.status)
+        );
+      });
+
     this.infaqListRef = db.list('transaction', ref => ref.orderByChild('transid').equalTo('INFAQ'));
     this.infaqList = this.infaqListRef.snapshotChanges().pipe(
       map(changes =>
@@ -52,13 +76,40 @@ export class PaymentlistComponent implements OnInit {
       )
     );
 
+    this.infaqList.subscribe(
+      competitors => {
+        competitors.map(competitor =>
+          this.calcInfaq(competitor.amount, competitor.status)
+        );
+      });
+
   }
 
-  calcTotal(val){
-    this.total = +this.total + +val;
+  calcTotal(amt, status) {
+    if (status === "Paid" || status === "paid") {
+      this.total = +this.total + +amt;
+    }
   }
 
   ngOnInit() {
+  }
+
+  calcZakat(amt, status) {
+    if (status === "Paid" || status === "paid") {
+      this.zakatamt = +this.zakatamt + +amt;
+    }
+  }
+
+  calcFidyah(amt, status) {
+    if (status === "Paid" || status === "paid") {
+      this.fidyahamt = +this.fidyahamt + +amt;
+    }
+  }
+
+  calcInfaq(amt, status) {
+    if (status === "Paid" || status === "paid") {
+      this.infaqamt = +this.infaqamt + +amt;
+    }
   }
 
 }

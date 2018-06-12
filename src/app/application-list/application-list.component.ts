@@ -46,6 +46,7 @@ export class ApplicationListComponent implements OnInit {
       this.userInfo = this.userInfoRef.valueChanges();
 
       this.userInfoRef.update({'status': 'Paid'});
+      this.userInfoRef.update({'flag': 1});
   }
 
 }
